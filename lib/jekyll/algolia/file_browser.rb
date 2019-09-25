@@ -90,7 +90,7 @@ module Jekyll
       def self.redirect?(file)
         # When using redirect_from, jekyll-redirect-from creates a page named
         # `redirect.html`
-        return true if file.respond_to?(:name) && file.name == 'redirect.html'
+        return true if file.respond_to?(:name) && file.data && file.data["name"] == 'redirect.html'
         # When using redirect_to, it sets the layout to `redirect`
         if file.respond_to?(:data) && file.data['layout'] == 'redirect'
           return true
